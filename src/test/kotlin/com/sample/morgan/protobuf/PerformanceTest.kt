@@ -28,10 +28,8 @@ class PerformanceTest : FunSpec({
             Person.parseFrom(bytes)
         }
 
-        for (i in 1..5) {
-            runPerformanceTest(json, "json")
-            runPerformanceTest(proto, "protobuf")
-        }
+        runPerformanceTest(json, "json")
+        runPerformanceTest(proto, "protobuf")
     }
 })
 

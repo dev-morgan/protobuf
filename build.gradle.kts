@@ -14,7 +14,6 @@ buildscript {
 
 plugins {
     idea
-    java
     kotlin("jvm") version "1.6.10"
     id("com.google.protobuf") version "0.8.18"
 }
@@ -26,15 +25,18 @@ repositories {
     mavenCentral()
 }
 
-sourceSets {
-    main {
-        java {
-            srcDirs("build/generated/source/proto/main/java/")
-            srcDirs("build/generated/source/proto/main/grpc/")
-        }
-        proto {
-            srcDirs("src/main/proto/")
-        }
+idea {
+    module {
+        sourceDirs.addAll(
+            listOf(
+                file("src/generated/main/grpc")
+            )
+        )
+        generatedSourceDirs.addAll(
+            listOf(
+                file("src/generated/main/grpc")
+            )
+        )
     }
 }
 
@@ -49,9 +51,6 @@ protobuf {
     }
     generateProtoTasks {
         ofSourceSet("main").forEach { task ->
-            task.builtins {
-                java
-            }
             task.plugins {
                 id("grpc")
             }
