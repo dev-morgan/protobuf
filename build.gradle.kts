@@ -25,21 +25,6 @@ repositories {
     mavenCentral()
 }
 
-idea {
-    module {
-        sourceDirs.addAll(
-            listOf(
-                file("src/generated/main/grpc")
-            )
-        )
-        generatedSourceDirs.addAll(
-            listOf(
-                file("src/generated/main/grpc")
-            )
-        )
-    }
-}
-
 protobuf {
     protoc {
         artifact = "com.google.protobuf:protoc:3.19.1"
@@ -58,12 +43,18 @@ protobuf {
     }
 }
 
+idea {
+    module {
+        generatedSourceDirs.add(file("${protobuf.protobuf.generatedFilesBaseDir}/main/grpc"))
+    }
+}
+
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-    implementation("com.google.api.grpc:proto-google-common-protos:2.7.0")
     implementation("io.grpc:grpc-protobuf:1.42.1")
+    implementation("com.google.api.grpc:proto-google-common-protos:2.7.0")
 
     implementation("org.apache.tomcat:tomcat-annotations-api:10.0.14")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.13.0")
