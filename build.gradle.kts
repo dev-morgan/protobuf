@@ -43,7 +43,7 @@ protobuf {
         artifact = "com.google.protobuf:protoc:3.19.1"
     }
     plugins {
-        id("grpc"){
+        id("grpc") {
             artifact = "io.grpc:protoc-gen-grpc-java:1.42.1"
         }
     }
@@ -61,10 +61,16 @@ protobuf {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
     implementation("com.google.api.grpc:proto-google-common-protos:2.7.0")
     implementation("io.grpc:grpc-protobuf:1.42.1")
 
     implementation("org.apache.tomcat:tomcat-annotations-api:10.0.14")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.0")
+
+    testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
+
 }
 
 tasks {
@@ -72,5 +78,9 @@ tasks {
         filesMatching("**/*.proto") {
             duplicatesStrategy = DuplicatesStrategy.INCLUDE
         }
+    }
+
+    withType<Test> {
+        useJUnitPlatform()
     }
 }
