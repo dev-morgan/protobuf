@@ -39,6 +39,9 @@ protobuf {
             task.plugins {
                 id("grpc")
             }
+            task.builtins {
+                create("js")
+            }
         }
     }
 }
