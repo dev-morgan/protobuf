@@ -1,4 +1,4 @@
-package com.sample.morgan.json
+package com.sample.protobuf.json
 
 data class JPerson(
     val name: String,

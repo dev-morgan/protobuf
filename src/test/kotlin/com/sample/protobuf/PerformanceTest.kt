@@ -1,9 +1,9 @@
-package com.sample.morgan.protobuf
+package com.sample.protobuf
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import com.sample.morgan.json.JPerson
-import com.sample.morgan.models.Person
+import com.sample.protobuf.json.JPerson
+import com.sample.protobuf.models.Person
 import io.kotlintest.matchers.types.shouldNotBeNull
 import io.kotlintest.specs.FunSpec
 import mu.KLogging
