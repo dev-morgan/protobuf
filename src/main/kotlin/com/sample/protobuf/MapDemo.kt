@@ -11,12 +11,14 @@ fun main() {
         .setBodyStyle(BodyStyle.SEDAN)
         .setYear(2020)
         .build()
+
     val modelX = Car.newBuilder()
         .setMake("tesla")
         .setModel("Model X")
         .setBodyStyle(BodyStyle.SUV)
         .setYear(2021)
         .build()
+
     val dealer = Dealer.newBuilder()
         .putAllModel(mapOf(2020 to model3, 2021 to modelX))
         .build()
