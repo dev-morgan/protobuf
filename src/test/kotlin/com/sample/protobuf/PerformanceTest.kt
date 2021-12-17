@@ -19,6 +19,7 @@ class PerformanceTest : FunSpec({
 
         val json = measureTimeMillis {
             val bytes = mapper.writeValueAsBytes(person)
+            logger.info("json bytes size : ${bytes.size}")
             mapper.readValue(bytes, JPerson::class.java)
         }
 
@@ -30,6 +31,7 @@ class PerformanceTest : FunSpec({
 
         val proto = measureTimeMillis {
             val bytes = sam.toByteArray()
+            logger.info("proto bytes size : ${bytes.size}")
             Person.parseFrom(bytes)
         }
 

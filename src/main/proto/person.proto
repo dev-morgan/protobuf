@@ -8,8 +8,10 @@ option java_multiple_files = true;
 option java_package = "com.sample.models";
 
 message Person {
-  string name = 1;
-  google.protobuf.Int32Value age = 2;
+  // 1 - 5 : 1 byte, 1 is smallest
+  // 16 - 2047 : 2bytes
+  string name = 1; // 1 is tag
+  google.protobuf.Int32Value age = 2; // Do not change the field number once it is in user
   common.Address address = 3;
   repeated common.Car car = 4;
 }
