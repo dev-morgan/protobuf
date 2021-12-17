@@ -4,15 +4,19 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import com.sample.morgan.json.JPerson
 import com.sample.morgan.models.Person
+import io.kotlintest.matchers.types.shouldNotBeNull
 import io.kotlintest.specs.FunSpec
+import mu.KLogging
+import kotlin.system.measureTimeMillis
 
 class PerformanceTest : FunSpec({
+
     test("json vs proto") {
         // json
         val person = JPerson("sam", 10)
         val mapper = ObjectMapper().registerKotlinModule()
 
-        val json = Runnable {
+        val json = measureTimeMillis {
             val bytes = mapper.writeValueAsBytes(person)
             mapper.readValue(bytes, JPerson::class.java)
         }
@@ -23,21 +27,17 @@ class PerformanceTest : FunSpec({
             .setAge(10)
             .build()
 
-        val proto = Runnable {
+        val proto = measureTimeMillis {
             val bytes = sam.toByteArray()
             Person.parseFrom(bytes)
         }
 
-        runPerformanceTest(json, "json")
-        runPerformanceTest(proto, "protobuf")
-    }
-})
+        logger.info("(Json took $json ms)")
+        logger.info("(Proto took $proto ms)")
 
-fun runPerformanceTest(runnable: Runnable, method: String) {
-    val time1 = System.currentTimeMillis()
-    for (i in 1..1_000_000) {
-        runnable.run()
+        json.shouldNotBeNull()
+        proto.shouldNotBeNull()
     }
-    val time2 = System.currentTimeMillis()
-    println(method + "-> " + (time2 - time1) + " ms")
+}) {
+    companion object : KLogging()
 }
