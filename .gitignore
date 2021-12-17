@@ -13,3 +13,7 @@ build/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+
+
+/tv-v1
+/tv-v2
