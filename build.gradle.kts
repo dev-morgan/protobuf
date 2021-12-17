@@ -52,6 +52,12 @@ idea {
     }
 }
 
+tasks {
+    test {
+        useJUnitPlatform()
+    }
+}
+
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -63,17 +69,4 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.13.0")
 
     testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
-
-}
-
-tasks {
-    withType<Copy> {
-        filesMatching("**/*.proto") {
-            duplicatesStrategy = DuplicatesStrategy.INCLUDE
-        }
-    }
-
-    withType<Test> {
-        useJUnitPlatform()
-    }
 }
