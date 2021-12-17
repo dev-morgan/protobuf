@@ -1,9 +1,9 @@
 package com.sample.protobuf
 
+import com.google.protobuf.Int32Value
 import com.sample.models.Address
 import com.sample.models.Car
 import com.sample.models.Person
-import mu.KLogging
 
 fun main() {
     val address = Address.newBuilder()
@@ -26,10 +26,11 @@ fun main() {
 
     val person = Person.newBuilder()
         .setName("morgan")
-        .setAge(17)
-        .setAddress(address)
+        .setAge(Int32Value.newBuilder().setValue(20).build())
         .addAllCar(listOf(modelX, model3))
+        .setAddress(address)
         .build()
 
     println(person)
+    println(person.hasAge())
 }

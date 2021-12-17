@@ -2,6 +2,7 @@ package com.sample.protobuf
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
+import com.google.protobuf.Int32Value
 import com.sample.protobuf.json.JPerson
 import com.sample.models.Person
 import io.kotlintest.matchers.types.shouldNotBeNull
@@ -24,7 +25,7 @@ class PerformanceTest : FunSpec({
         // protobuf
         val sam = Person.newBuilder()
             .setName("sam")
-            .setAge(10)
+            .setAge(Int32Value.newBuilder().setValue(10).build())
             .build()
 
         val proto = measureTimeMillis {
