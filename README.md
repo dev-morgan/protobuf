@@ -1,3 +1,3 @@
 # protobuf
 
-protobuf sample project
+play Protocol Buffers
