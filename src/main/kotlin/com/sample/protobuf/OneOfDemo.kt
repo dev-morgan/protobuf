@@ -1,10 +1,10 @@
 package com.sample.protobuf
 
 import com.sample.models.Credentials
+import com.sample.models.Credentials.ModeCase.EMAILMODE
+import com.sample.models.Credentials.ModeCase.PHONEMODE
 import com.sample.models.EmailCredentials
 import com.sample.models.PhoneOTP
-import com.sample.models.Credentials.ModeCase.EMAILMODE as EMAILMODE
-import com.sample.models.Credentials.ModeCase.PHONEMODE as PHONEMODE
 
 fun main() {
     val emailCredentials = EmailCredentials.newBuilder()
@@ -22,17 +22,16 @@ fun main() {
         .build()
 
     login(credentials)
-
 }
 
 fun login(credentials: Credentials) {
 
     when (credentials.modeCase) {
+
         EMAILMODE -> println(credentials.emailMode)
         PHONEMODE -> println(credentials.phoneMode)
         else -> {
             println("unknown mode")
         }
     }
-
 }

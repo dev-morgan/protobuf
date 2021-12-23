@@ -3,8 +3,8 @@ package com.sample.protobuf
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import com.google.protobuf.Int32Value
-import com.sample.protobuf.json.JPerson
 import com.sample.models.Person
+import com.sample.protobuf.json.JPerson
 import io.kotlintest.matchers.types.shouldNotBeNull
 import io.kotlintest.specs.FunSpec
 import mu.KLogging

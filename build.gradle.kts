@@ -61,7 +61,7 @@ tasks {
 val kotlinLoggingVersion = "2.1.20"
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    implementation("io.github.microutils:kotlin-logging:${kotlinLoggingVersion}")
+    implementation("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
     implementation("ch.qos.logback:logback-classic:1.2.9")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
