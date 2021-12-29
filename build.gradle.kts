@@ -31,15 +31,20 @@ protobuf {
     }
     plugins {
         id("grpc") {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.43.1"
+            artifact = "io.grpc:protoc-gen-grpc-java:1.43.1" // The protoc plugin for gRPC Java
+        }
+        id("grpckt") {
+            artifact = "io.grpc:protoc-gen-grpc-kotlin:1.2.0:jdk7@jar"
         }
     }
     generateProtoTasks {
         ofSourceSet("main").forEach { task ->
             task.plugins {
                 id("grpc")
+                id("grpckt")
             }
             task.builtins {
+                id("kotlin")
                 create("js")
             }
         }
@@ -66,7 +71,9 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     implementation("io.grpc:grpc-protobuf:1.43.1")
-    implementation("com.google.api.grpc:proto-google-common-protos:2.7.0")
+    implementation("io.grpc:grpc-kotlin-stub:1.2.0")
+
+    implementation("com.google.protobuf:protobuf-kotlin:3.19.1")
 
     implementation("org.apache.tomcat:tomcat-annotations-api:10.0.14")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.13.1")
