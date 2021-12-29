@@ -31,7 +31,7 @@ protobuf {
     }
     plugins {
         id("grpc") {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.42.1"
+            artifact = "io.grpc:protoc-gen-grpc-java:1.43.1"
         }
     }
     generateProtoTasks {
@@ -58,7 +58,7 @@ tasks {
     }
 }
 
-val kotlinLoggingVersion = "2.1.20"
+val kotlinLoggingVersion = "2.1.21"
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
@@ -69,7 +69,7 @@ dependencies {
     implementation("com.google.api.grpc:proto-google-common-protos:2.7.0")
 
     implementation("org.apache.tomcat:tomcat-annotations-api:10.0.14")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.0")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.1")
 
     testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
 }
