@@ -24,10 +24,10 @@ class PerformanceTest : FunSpec({
         }
 
         // protobuf
-        val sam = Person.newBuilder()
-            .setName("sam")
-            .setAge(Int32Value.newBuilder().setValue(10).build())
-            .build()
+        val sam = Person.newBuilder().apply {
+            name = "sam"
+            age = Int32Value.newBuilder().setValue(10).build()
+        }.build()
 
         val proto = measureTimeMillis {
             val bytes = sam.toByteArray()

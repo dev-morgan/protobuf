@@ -9,19 +9,19 @@ import java.nio.file.Paths
 
 class VersionCompatibilityTest : FunSpec({
     test("read & write with version") {
-//    val television = Television.newBuilder()
-//        .setBrand("sony")
-//        .setYear(2015)
-//        .build()
+//    val television = Television.newBuilder().apply {
+//        brand = "sony"
+//        year = 2015
+//    }.build()
 //
 //    val pathV1 = Paths.get("tv-v1")
 //    Files.write(pathV1, television.toByteArray())
 
-        val television = Television.newBuilder()
-            .setBrand("sony")
-            .setPrice(100_000)
-            .setType(Type.OLED)
-            .build()
+        val television = Television.newBuilder().apply {
+            brand = "sony"
+            price = 100_000
+            type = Type.OLED
+        }.build()
 
         val pathV2 = Paths.get("tv-v2")
         Files.write(pathV2, television.toByteArray())

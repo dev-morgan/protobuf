@@ -9,19 +9,19 @@ import mu.KLogging
 
 class MapTest : FunSpec({
     test("map") {
-        val model3 = Car.newBuilder()
-            .setMake("tesla")
-            .setModel("Model 3")
-            .setBodyStyle(BodyStyle.SEDAN)
-            .setYear(2020)
-            .build()
+        val model3 = Car.newBuilder().apply {
+            make = "tesla"
+            model = "Model 3"
+            bodyStyle = BodyStyle.SEDAN
+            year = 2020
+        }.build()
 
-        val modelX = Car.newBuilder()
-            .setMake("tesla")
-            .setModel("Model X")
-            .setBodyStyle(BodyStyle.SUV)
-            .setYear(2021)
-            .build()
+        val modelX = Car.newBuilder().apply {
+            make = "tesla"
+            model = "Model X"
+            bodyStyle = BodyStyle.SUV
+            year = 2021
+        }.build()
 
         val dealer = Dealer.newBuilder()
             .putAllModel(mapOf(2020 to model3, 2021 to modelX))

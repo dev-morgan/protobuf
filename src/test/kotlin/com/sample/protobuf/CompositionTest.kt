@@ -10,23 +10,23 @@ import mu.KLogging
 
 class CompositionTest : FunSpec({
     test("default Value") {
-        val address = Address.newBuilder()
-            .setPostbox(1234)
-            .setStreet("Gangnam")
-            .setCity("Seoul")
-            .build()
+        val address = Address.newBuilder().apply {
+            postbox = 1234
+            street = "Gangnam"
+            city = "Seoul"
+        }.build()
 
-        val modelX = Car.newBuilder()
-            .setMake("tesla")
-            .setModel("Model X")
-            .setYear(2021)
-            .build()
+        val modelX = Car.newBuilder().apply {
+            make = "tesla"
+            model = "Model X"
+            year = 2021
+        }.build()
 
-        val model3 = Car.newBuilder()
-            .setMake("tesla")
-            .setModel("Model 3")
-            .setYear(2020)
-            .build()
+        val model3 = Car.newBuilder().apply {
+            make = "tesla"
+            model = "Model 3"
+            year = 2020
+        }.build()
 
         val person = Person.newBuilder()
             .setName("morgan")
@@ -36,6 +36,7 @@ class CompositionTest : FunSpec({
             .build()
 
         logger.info { person }
+
         person.hasAge().shouldBeTrue()
     }
 }) {
