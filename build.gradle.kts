@@ -1,6 +1,7 @@
 import com.google.protobuf.gradle.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+val grpcVersion by extra { "1.43.1" }
 buildscript {
     repositories {
         maven {
@@ -32,7 +33,7 @@ protobuf {
     }
     plugins {
         id("grpc") {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.43.1" // The protoc plugin for gRPC Java
+            artifact = "io.grpc:protoc-gen-grpc-java:${rootProject.extra["grpcVersion"]}" // The protoc plugin for gRPC Java
         }
         id("grpckt") {
             artifact = "io.grpc:protoc-gen-grpc-kotlin:1.2.0:jdk7@jar"
@@ -83,7 +84,7 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.2.9")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-    implementation("io.grpc:grpc-protobuf:1.43.1")
+    implementation("io.grpc:grpc-protobuf:${rootProject.extra["grpcVersion"]}")
     implementation("io.grpc:grpc-kotlin-stub:1.2.0")
 
     implementation("com.google.protobuf:protobuf-kotlin:3.19.1")
