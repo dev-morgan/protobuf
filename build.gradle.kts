@@ -65,7 +65,7 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.2.9")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-    implementation("io.grpc:grpc-protobuf:1.42.1")
+    implementation("io.grpc:grpc-protobuf:1.43.1")
     implementation("com.google.api.grpc:proto-google-common-protos:2.7.0")
 
     implementation("org.apache.tomcat:tomcat-annotations-api:10.0.14")
